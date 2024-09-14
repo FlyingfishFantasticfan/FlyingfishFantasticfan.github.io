@@ -4,16 +4,43 @@
   
   
   <entry>
-    <title>Godot快速入门</title>
-    <link href="/2024/09/01/Godot%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8/"/>
-    <url>/2024/09/01/Godot%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8/</url>
+    <title>Godot全节点速览：2D节点</title>
+    <link href="/2024/09/05/Godot%E5%85%A8%E8%8A%82%E7%82%B9%E9%80%9F%E8%A7%88%EF%BC%9A2D%E8%8A%82%E7%82%B9-1/"/>
+    <url>/2024/09/05/Godot%E5%85%A8%E8%8A%82%E7%82%B9%E9%80%9F%E8%A7%88%EF%BC%9A2D%E8%8A%82%E7%82%B9-1/</url>
     
-    <content type="html"><![CDATA[<h1 id="学习GDScirpt"><a href="#学习GDScirpt" class="headerlink" title="学习GDScirpt"></a>学习GDScirpt</h1><p>网站<a href="https://reimenn.github.io/MyGDSciprtBook/GDScript.html">GDScript 零基础图文入门</a></p>]]></content>
+    <content type="html"><![CDATA[<p>节点是Godot的基础概念，通过节点和节点的组合，我们可以创建出复杂的游戏场景，我观看了<a href="https://www.bilibili.com/video/BV1ob4y1G7s1/?spm_id_from=333.880.my_history.page.click&vd_source=05dbda716a80e2e65ab973742bb8b79c">B站搬运42分钟内解释所有219个 Godot 节点!</a>，结合自己阅读官方文档以及实践对Godot全节点记录笔记。</p><span id="more"></span><h3 id="Node2D"><a href="#Node2D" class="headerlink" title="Node2D"></a>Node2D</h3><p><strong>简介</strong>：2D游戏对象，被所有2D相关节点继承。<br><strong>属性</strong>：</p><ul><li>Vector2 <em>global_position</em>：全局位置，存x，y坐标</li><li>float <em>global_rotation</em>：全局旋转，存旋转弧度</li><li>float <em>global_ratation_degrees</em>：全局旋转，存旋转度数</li><li>Vector2 <em>global_scale</em>：全局缩放，存x，y缩放比例</li><li>float <em>global_scale</em>：全局倾斜，存倾斜弧度</li><li>Transform2D <em>global_transform</em>：全局 <a href="https://docs.godotengine.org/zh-cn/4.x/classes/class_transform2d.html#class-transform2d">Transform2D</a>，存2D变化矩阵</li></ul><p>所有的属性均有相对于父节点的局部属性。<br><strong>作用</strong>：使用 Node2D 作为父节点可以移动、缩放和旋转 2D 项目中的子节点。还可以控制节点的渲染顺序。  </p><h3 id="Sprite2D"><a href="#Sprite2D" class="headerlink" title="Sprite2D"></a>Sprite2D</h3><p><strong>简介</strong>：显示 2D 纹理的节点。<br><strong>属性</strong>：</p><ul><li>Texture2D <em>texture</em>：要绘制的Texture2D对象</li><li>Vector2 <em>offset</em>：纹理绘图偏移量，存x，y上偏移的值</li><li>bool <em>centered</em>：是否居中，为 true时，纹理居中</li><li>bool <em>flip_v</em>：是否垂直翻转，为true时，纹理垂直翻转</li><li>bool <em>flip_h</em>：是否水平翻转，为true时，纹理水平翻转</li><li>int <em>frame</em>：当前显示帧，可以在Sprite2D中导入精灵表，储存当前显示第几帧</li><li>Vector2i <em>frame_coords</em>：当前显示帧在精灵表中的坐标，储存此帧在第几行第几列。</li><li>int <em>hframe</em>：在精灵表中的列数</li><li>int <em>vframe</em>：在精灵表中的行数</li><li>bool <em>region_enabled</em>：是否开启区域裁剪，为ture时，可以从一个较大的纹理中裁剪部分区域</li><li>bool <em>region_filter_clip_enabled</em>：是否开启区域过滤裁剪，为true时，只处理或显示指定区域内的内容，而忽略区域外的部分</li><li>Rect2 <em>region_rect</em>：显示的区域，储存显示区域的范围<br><strong>作用</strong>：通用的2D纹理渲染。</li></ul><h3 id="AnimatedSprite2D"><a href="#AnimatedSprite2D" class="headerlink" title="AnimatedSprite2D"></a>AnimatedSprite2D</h3><p><strong>简介</strong>：与Sprite2D节点类似，但是包含多张纹理，可用作动画。</p><p><strong>属性</strong>：</p><ul><li>SpriteFrames <em>sprite_frames</em>：包含动画帧的SpriteFrames资源</li><li>String <em>animation</em>：当前播放的动画名称</li><li>int <em>frame</em>：当前显示的帧索引</li><li>float <em>speed_scale</em>：动画播放速度的缩放因子</li><li>bool <em>playing</em>：是否正在播放动画</li><li>bool <em>centered</em>：是否将精灵居中</li><li>Vector2 <em>offset</em>：绘制偏移量</li><li>bool <em>flip_h</em>：是否水平翻转</li><li>bool <em>flip_v</em>：是否垂直翻转</li></ul><p><strong>作用</strong>：用于创建和播放2D精灵动画，适合用于角色、物品或环境中的动态元素。</p><h3 id="CollisionShape2D"><a href="#CollisionShape2D" class="headerlink" title="CollisionShape2D"></a>CollisionShape2D</h3><p><strong>简介</strong>：定义2D碰撞形状的节点。</p><p><strong>属性</strong>：</p><ul><li>Shape2D <em>shape</em>：用于碰撞检测的Shape2D资源</li><li>bool <em>disabled</em>：是否禁用碰撞形状</li></ul><p><strong>作用</strong>：为物理对象定义碰撞区域，通常作为PhysicsBody2D或Area2D的子节点使用。</p><h3 id="Area2D"><a href="#Area2D" class="headerlink" title="Area2D"></a>Area2D</h3><p><strong>简介</strong>：2D区域检测节点，用于检测其他物体的进入和退出。</p><p><strong>属性</strong>：</p><ul><li>int <em>collision_layer</em>：碰撞层，决定区域属于哪些层</li><li>int <em>collision_mask</em>：碰撞掩码，决定区域可以与哪些层交互</li><li>bool <em>monitorable</em>：是否可被其他Area2D监视</li><li>bool <em>monitoring</em>：是否监视其他物体的进入和退出</li></ul><p><strong>作用</strong>：用于触发区域、检测重叠、实现简单的碰撞等。常用于实现拾取物品、触发事件等功能。</p><h3 id="StaticBody2D"><a href="#StaticBody2D" class="headerlink" title="StaticBody2D"></a>StaticBody2D</h3><p><strong>简介</strong>：静态物理节点，用于表示不会移动的物体。</p><p><strong>属性</strong>：</p><ul><li>float <em>constant_linear_velocity</em>：恒定线性速度</li><li>float <em>constant_angular_velocity</em>：恒定角速度</li><li>int <em>collision_layer</em>：碰撞层，决定物体属于哪些层</li><li>int <em>collision_mask</em>：碰撞掩码，决定物体可以与哪些层交互</li><li>float <em>friction</em>：摩擦系数</li><li>float <em>bounce</em>：弹性系数</li><li>PhysicsMaterial <em>physics_material_override</em>：物理材质覆盖，用于自定义物理属性</li></ul><p><strong>作用</strong>：用于创建不受物理影响的静态物体，如墙壁、地面、平台等。常用于构建游戏世界的固定元素。</p><h3 id="GpuParticles2D"><a href="#GpuParticles2D" class="headerlink" title="GpuParticles2D"></a>GpuParticles2D</h3><p><strong>简介</strong>：用于在GPU上模拟和渲染2D粒子的节点。</p><p><strong>属性</strong>：</p><ul><li>int <em>amount</em>：粒子数量</li><li>float <em>lifetime</em>：每个粒子的生命周期</li><li>bool <em>one_shot</em>：是否为一次性粒子效果</li><li>bool <em>preprocess</em>：预处理时间，用于在粒子系统开始时预先模拟粒子</li><li>bool <em>explosiveness</em>：粒子发射的爆发性</li><li>float <em>speed_scale</em>：粒子系统的速度缩放因子</li><li>Vector2 <em>gravity</em>：粒子受重力影响的方向和强度</li><li>float <em>angle</em>：粒子发射的初始角度</li><li>float <em>angle_random</em>：粒子发射角度的随机性</li><li>float <em>scale</em>：粒子的初始缩放</li><li>float <em>scale_random</em>：粒子缩放的随机性</li><li>Color <em>color</em>：粒子的初始颜色</li><li>float <em>color_random</em>：粒子颜色的随机性</li><li>bool <em>emitting</em>：是否正在发射粒子</li></ul><p><strong>作用</strong>：用于创建高性能的2D粒子效果，适合用于火焰、烟雾、爆炸等视觉效果。</p><hr><p>还是建议多去阅读官方文档，我自己在学习Godot的过程中，尝试制作了一个带有音效、粒子效果等等增加游戏质感的内容，我遇到了很多问题，比方说粒子该如何发射、粒子颜色如何设置等等，这些问题基本都可以在官方文档中找到。</p>]]></content>
     
     
     <categories>
       
-      <category>Godot</category>
+      <category>零基础新手Godot快速入门</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>游戏开发</tag>
+      
+      <tag>Godot</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>初识快速上手Godot</title>
+    <link href="/2024/09/01/%E5%88%9D%E8%AF%86%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8BGodot/"/>
+    <url>/2024/09/01/%E5%88%9D%E8%AF%86%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8BGodot/</url>
+    
+    <content type="html"><![CDATA[<p>我记录并收集了自己学习Godot游戏引擎的过程，希望对想要入门Godot的新手有所帮助。  </p><span id="more"></span><h1 id="Godot入门"><a href="#Godot入门" class="headerlink" title="Godot入门"></a>Godot入门</h1><h3 id="熟悉Godot操作"><a href="#熟悉Godot操作" class="headerlink" title="熟悉Godot操作"></a>熟悉Godot操作</h3><ul><li>视频跟做：<a href="%5B%E3%80%90%E7%B2%BE%E5%93%81%E7%86%9F%E8%82%89%E3%80%91%E6%83%B3%E5%9C%A82024%E5%B9%B4%E5%81%9A%E6%B8%B8%E6%88%8F%EF%BC%9F%E8%B7%9F%E7%9D%80Brackeys%E6%9D%A5%E5%AD%A6Godot%E5%BC%95%E6%93%8E%E5%90%A7%EF%BC%81_%E5%93%94%E5%93%A9%E5%93%94%E5%93%A9_bilibili%5D(https://www.bilibili.com/video/BV17Z421J7uF/?spm_id_from=333.880.my_history.page.click)">B站搬运油管大佬Brackeys的Godot入门</a></li><li>作者：Brackeys</li></ul><p><img src="/../img/Godot%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8/mqdefault.jpg"></p><p>学习Godot可以先从熟悉Godot的基本概念以及界面操作开始，如何创建游戏场景、如何创建精灵、怎么编写脚本、怎么导出项目，通过完成一个小型的平台跳跃游戏并将其导出，你便可以熟悉这些内容。  </p><p>这个视频全长1小时17分钟，视频并不枯燥制作十分优秀，全视频中仅编写了几个简单的脚本并且是手把手带着做，对于无编程基础或是没学过GDScript的新手友好，视频的作者Brackeys曾是油管最受欢迎的Unity游戏引擎视频主。  </p><h3 id="学习GDScirpt"><a href="#学习GDScirpt" class="headerlink" title="学习GDScirpt"></a>学习GDScirpt</h3><ul><li>文档阅读：<a href="https://reimenn.github.io/MyGDSciprtBook/GDScript.html">GDScript 零基础图文入门</a></li><li>作者：Rika</li></ul><p>在Godot中制作游戏离不开编程，Godot主要支持使用GDScirpt、C#、C++进行编程，GDScript是专门为Godot编写的脚本语言，契合度非常高，并且设计的比通用程序设计语言简单，学习成本低，使用GDScirpt可以让新手专注于游戏本身，不过多被技术问题困扰。</p><p>该文档介绍了GDScirpt的变量、循环、判断等基础知识，稍带有面向对象思想的讲解以及引擎交互的讲解，同时有简单的实战项目便于理解、学习。</p><hr><pre><code class="hljs">在完成了以上内容后已经具备了初步进行一些简单的2D游戏开发能力，可以尝试把先前视频跟做的项目更加完善，制作多个关卡、增加攻击敌人的玩法等等。</code></pre><h1 id="Godot精进"><a href="#Godot精进" class="headerlink" title="Godot精进"></a>Godot精进</h1><p>接下来可以选择跟做<a href="https://reimenn.github.io/MyGDSciprtBook/Part1/%E8%B5%84%E6%BA%90%E6%B1%87%E6%80%BB.html">功能更加复杂的项目</a>或是阅读<a href="https://docs.godotengine.org/zh-cn/4.x/">官方文档</a>，我也会在接下来学习Godot的过程中不断分享自己的经验和知识。</p><p>文章的最后，让为我准备通过Godot制作的卡牌肉鸽游戏打一个小小广告<a href="https://www.flyingfishfantasticfan.top/2024/08/28/%E5%8D%A1%E7%89%8C%E8%82%89%E9%B8%BD%E9%87%8D%E5%90%AF%E8%AE%A1%E5%88%92%EF%BC%81%EF%BC%81%EF%BC%81/">卡牌肉鸽</a></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>零基础新手Godot快速入门</category>
       
     </categories>
     
@@ -35,7 +62,7 @@
     <link href="/2024/08/28/%E5%8D%A1%E7%89%8C%E8%82%89%E9%B8%BD%E9%87%8D%E5%90%AF%E8%AE%A1%E5%88%92%EF%BC%81%EF%BC%81%EF%BC%81/"/>
     <url>/2024/08/28/%E5%8D%A1%E7%89%8C%E8%82%89%E9%B8%BD%E9%87%8D%E5%90%AF%E8%AE%A1%E5%88%92%EF%BC%81%EF%BC%81%EF%BC%81/</url>
     
-    <content type="html"><![CDATA[]]></content>
+    <content type="html"><![CDATA[<p><img src="/../img/avatar.png" alt="1"></p>]]></content>
     
     
     <categories>
