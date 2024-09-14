@@ -35,12 +35,39 @@
     <link href="/2024/09/01/%E5%88%9D%E8%AF%86%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8BGodot/"/>
     <url>/2024/09/01/%E5%88%9D%E8%AF%86%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8BGodot/</url>
     
-    <content type="html"><![CDATA[<p>我记录并收集了自己学习Godot游戏引擎的过程，希望对想要入门Godot的新手有所帮助。  </p><span id="more"></span><h1 id="Godot入门"><a href="#Godot入门" class="headerlink" title="Godot入门"></a>Godot入门</h1><h3 id="熟悉Godot操作"><a href="#熟悉Godot操作" class="headerlink" title="熟悉Godot操作"></a>熟悉Godot操作</h3><ul><li>视频跟做：<a href="%5B%E3%80%90%E7%B2%BE%E5%93%81%E7%86%9F%E8%82%89%E3%80%91%E6%83%B3%E5%9C%A82024%E5%B9%B4%E5%81%9A%E6%B8%B8%E6%88%8F%EF%BC%9F%E8%B7%9F%E7%9D%80Brackeys%E6%9D%A5%E5%AD%A6Godot%E5%BC%95%E6%93%8E%E5%90%A7%EF%BC%81_%E5%93%94%E5%93%A9%E5%93%94%E5%93%A9_bilibili%5D(https://www.bilibili.com/video/BV17Z421J7uF/?spm_id_from=333.880.my_history.page.click)">B站搬运油管大佬Brackeys的Godot入门</a></li><li>作者：Brackeys</li></ul><p><img src="/../img/Godot%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8/mqdefault.jpg"></p><p>学习Godot可以先从熟悉Godot的基本概念以及界面操作开始，如何创建游戏场景、如何创建精灵、怎么编写脚本、怎么导出项目，通过完成一个小型的平台跳跃游戏并将其导出，你便可以熟悉这些内容。  </p><p>这个视频全长1小时17分钟，视频并不枯燥制作十分优秀，全视频中仅编写了几个简单的脚本并且是手把手带着做，对于无编程基础或是没学过GDScript的新手友好，视频的作者Brackeys曾是油管最受欢迎的Unity游戏引擎视频主。  </p><h3 id="学习GDScirpt"><a href="#学习GDScirpt" class="headerlink" title="学习GDScirpt"></a>学习GDScirpt</h3><ul><li>文档阅读：<a href="https://reimenn.github.io/MyGDSciprtBook/GDScript.html">GDScript 零基础图文入门</a></li><li>作者：Rika</li></ul><p>在Godot中制作游戏离不开编程，Godot主要支持使用GDScirpt、C#、C++进行编程，GDScript是专门为Godot编写的脚本语言，契合度非常高，并且设计的比通用程序设计语言简单，学习成本低，使用GDScirpt可以让新手专注于游戏本身，不过多被技术问题困扰。</p><p>该文档介绍了GDScirpt的变量、循环、判断等基础知识，稍带有面向对象思想的讲解以及引擎交互的讲解，同时有简单的实战项目便于理解、学习。</p><hr><pre><code class="hljs">在完成了以上内容后已经具备了初步进行一些简单的2D游戏开发能力，可以尝试把先前视频跟做的项目更加完善，制作多个关卡、增加攻击敌人的玩法等等。</code></pre><h1 id="Godot精进"><a href="#Godot精进" class="headerlink" title="Godot精进"></a>Godot精进</h1><p>接下来可以选择跟做<a href="https://reimenn.github.io/MyGDSciprtBook/Part1/%E8%B5%84%E6%BA%90%E6%B1%87%E6%80%BB.html">功能更加复杂的项目</a>或是阅读<a href="https://docs.godotengine.org/zh-cn/4.x/">官方文档</a>，我也会在接下来学习Godot的过程中不断分享自己的经验和知识。</p><p>文章的最后，让为我准备通过Godot制作的卡牌肉鸽游戏打一个小小广告<a href="https://www.flyingfishfantasticfan.top/2024/08/28/%E5%8D%A1%E7%89%8C%E8%82%89%E9%B8%BD%E9%87%8D%E5%90%AF%E8%AE%A1%E5%88%92%EF%BC%81%EF%BC%81%EF%BC%81/">卡牌肉鸽</a></p>]]></content>
+    <content type="html"><![CDATA[<p>我记录并收集了自己学习Godot游戏引擎的过程，希望对想要入门Godot的新手有所帮助。  </p><span id="more"></span><h1 id="Godot入门"><a href="#Godot入门" class="headerlink" title="Godot入门"></a>Godot入门</h1><h3 id="熟悉Godot操作"><a href="#熟悉Godot操作" class="headerlink" title="熟悉Godot操作"></a>熟悉Godot操作</h3><ul><li>视频跟做：<a href="%5B%E3%80%90%E7%B2%BE%E5%93%81%E7%86%9F%E8%82%89%E3%80%91%E6%83%B3%E5%9C%A82024%E5%B9%B4%E5%81%9A%E6%B8%B8%E6%88%8F%EF%BC%9F%E8%B7%9F%E7%9D%80Brackeys%E6%9D%A5%E5%AD%A6Godot%E5%BC%95%E6%93%8E%E5%90%A7%EF%BC%81_%E5%93%94%E5%93%A9%E5%93%94%E5%93%A9_bilibili%5D(https://www.bilibili.com/video/BV17Z421J7uF/?spm_id_from=333.880.my_history.page.click)">B站搬运油管大佬Brackeys的Godot入门</a></li><li>作者：Brackeys</li></ul><p><img src="/../img/Godot%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8/mqdefault.jpg"></p><p>学习Godot可以先从熟悉Godot的基本概念以及界面操作开始，如何创建游戏场景、如何创建精灵、怎么编写脚本、怎么导出项目，通过完成一个小型的平台跳跃游戏并将其导出，你便可以熟悉这些内容。  </p><p>这个视频全长1小时17分钟，视频并不枯燥制作十分优秀，全视频中仅编写了几个简单的脚本并且是手把手带着做，对于无编程基础或是没学过GDScript的新手友好，视频的作者Brackeys曾是油管最受欢迎的Unity游戏引擎视频主。  </p><h3 id="学习GDScirpt"><a href="#学习GDScirpt" class="headerlink" title="学习GDScirpt"></a>学习GDScirpt</h3><ul><li>文档阅读：<a href="https://reimenn.github.io/MyGDSciprtBook/GDScript.html">GDScript 零基础图文入门</a></li><li>作者：Rika</li></ul><p>在Godot中制作游戏离不开编程，Godot主要支持使用GDScirpt、C#、C++进行编程，GDScript是专门为Godot编写的脚本语言，契合度非常高，并且设计的比通用程序设计语言简单，学习成本低，使用GDScirpt可以让新手专注于游戏本身，不过多被技术问题困扰。</p><p>该文档介绍了GDScirpt的变量、循环、判断等基础知识，稍带有面向对象思想的讲解以及引擎交互的讲解，同时有简单的实战项目便于理解、学习。</p><hr><pre><code class="hljs">在完成了以上内容后已经具备了初步进行一些简单的2D游戏开发能力，可以尝试把先前视频跟做的项目更加完善，制作多个关卡、增加攻击敌人的玩法等等。</code></pre><h1 id="Godot精进"><a href="#Godot精进" class="headerlink" title="Godot精进"></a>Godot精进</h1><p>接下来可以选择跟做<a href="https://reimenn.github.io/MyGDSciprtBook/Part1/%E8%B5%84%E6%BA%90%E6%B1%87%E6%80%BB.html">功能更加复杂的项目</a>或是阅读<a href="https://docs.godotengine.org/zh-cn/4.x/">官方文档</a>，我也会在接下来学习Godot的过程中不断分享自己的经验和知识。</p><p>可以从以下内容继续</p><h3 id="1-深入学习Godot的节点系统"><a href="#1-深入学习Godot的节点系统" class="headerlink" title="1. 深入学习Godot的节点系统"></a>1. 深入学习Godot的节点系统</h3><p>Godot的节点系统是其核心特性之一。深入理解各种节点的功能和用法，可以让你更灵活地构建游戏场景和功能。重点关注常用的节点如Node2D、Sprite、Area2D、KinematicBody2D等。</p><h3 id="2-掌握信号系统"><a href="#2-掌握信号系统" class="headerlink" title="2. 掌握信号系统"></a>2. 掌握信号系统</h3><p>信号系统是Godot中实现对象间通信的重要机制。学习如何创建、连接和使用信号，可以让你的游戏逻辑更加清晰和模块化。</p><h3 id="3-学习资源系统"><a href="#3-学习资源系统" class="headerlink" title="3. 学习资源系统"></a>3. 学习资源系统</h3><p>了解Godot的资源系统，包括如何创建、加载和使用各种资源（如场景、脚本、纹理等），可以帮助你更好地管理游戏资产。</p><h3 id="4-动画系统"><a href="#4-动画系统" class="headerlink" title="4. 动画系统"></a>4. 动画系统</h3><p>Godot提供了强大的动画系统。学习使用AnimationPlayer和AnimationTree可以让你创建更生动的游戏角色和场景。</p><h3 id="5-用户界面设计"><a href="#5-用户界面设计" class="headerlink" title="5. 用户界面设计"></a>5. 用户界面设计</h3><p>掌握Godot的UI系统，学习使用Control节点和主题资源，可以帮助你创建美观且功能丰富的游戏界面。</p><h3 id="6-物理系统"><a href="#6-物理系统" class="headerlink" title="6. 物理系统"></a>6. 物理系统</h3><p>深入学习Godot的2D和3D物理系统，可以让你创建更真</p>]]></content>
     
     
     <categories>
       
       <category>零基础新手Godot快速入门</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>游戏开发</tag>
+      
+      <tag>Godot</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>零基础新手Godot快速入门</title>
+    <link href="/2024/09/01/%E9%9B%B6%E5%9F%BA%E7%A1%80%E6%96%B0%E6%89%8BGodot%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8-%E5%88%9D%E8%AF%86Godot/"/>
+    <url>/2024/09/01/%E9%9B%B6%E5%9F%BA%E7%A1%80%E6%96%B0%E6%89%8BGodot%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8-%E5%88%9D%E8%AF%86Godot/</url>
+    
+    <content type="html"><![CDATA[<p>我记录并收集了自己学习Godot游戏引擎的过程，希望对想要入门Godot的新手有所帮助。  </p><span id="more"></span><h1 id="Godot入门"><a href="#Godot入门" class="headerlink" title="Godot入门"></a>Godot入门</h1><h3 id="熟悉Godot操作"><a href="#熟悉Godot操作" class="headerlink" title="熟悉Godot操作"></a>熟悉Godot操作</h3><ul><li>视频跟做：<a href="https://www.bilibili.com/video/BV17Z421J7uF/?spm_id_from=333.880.my_history.page.click">【精品熟肉】想在2024年做游戏？跟着Brackeys来学Godot引擎吧！_哔哩哔哩_bilibili</a></li><li>作者：Brackeys</li></ul><p><img src="/../img/Godot%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8/mqdefault.jpg"></p><p>学习Godot可以先从熟悉Godot的基本概念以及界面操作开始，如何创建游戏场景、如何创建精灵、怎么编写脚本、怎么导出项目，通过完成一个小型的平台跳跃游戏并将其导出，你便可以熟悉这些内容。  </p><p>这个视频全长1小时17分钟，视频并不枯燥制作十分优秀，全视频中仅编写了几个简单的脚本并且是手把手带着做，对于无编程基础或是没学过GDScript的新手友好，视频的作者Brackeys曾是油管最受欢迎的Unity游戏引擎视频主。  </p><h3 id="学习GDScirpt"><a href="#学习GDScirpt" class="headerlink" title="学习GDScirpt"></a>学习GDScirpt</h3><ul><li>文档阅读：<a href="https://reimenn.github.io/MyGDSciprtBook/GDScript.html">GDScript 零基础图文入门</a></li><li>作者：Rika</li></ul><p>在Godot中制作游戏离不开编程，Godot主要支持使用GDScirpt、C#、C++进行编程，GDScript是专门为Godot编写的脚本语言，契合度非常高，并且设计的比通用程序设计语言简单，学习成本低，使用GDScirpt可以让新手专注于游戏本身，不过多被技术问题困扰。</p><p>该文档介绍了GDScirpt的变量、循环、判断等基础知识，稍带有面向对象思想的讲解以及引擎交互的讲解，同时有简单的实战项目便于理解、学习。</p><hr><pre><code class="hljs">在完成了以上内容后已经具备了初步进行一些简单的2D游戏开发能力，可以尝试把先前视频跟做的项目更加完善，制作多个关卡、增加攻击敌人的玩法等等。</code></pre><h1 id="Godot精进"><a href="#Godot精进" class="headerlink" title="Godot精进"></a>Godot精进</h1><p>接下来可以选择跟做<a href="https://reimenn.github.io/MyGDSciprtBook/Part1/%E8%B5%84%E6%BA%90%E6%B1%87%E6%80%BB.html">功能更加复杂的项目</a>或是阅读<a href="https://docs.godotengine.org/zh-cn/4.x/">官方文档</a>，我会在接下来的学习中不断分享所学到的知识。</p><p>文章的最后，让为我准备通过Godot制作的卡牌肉鸽游戏打一个小小广告<a href="https://www.flyingfishfantasticfan.top/2024/08/28/%E5%8D%A1%E7%89%8C%E8%82%89%E9%B8%BD%E9%87%8D%E5%90%AF%E8%AE%A1%E5%88%92%EF%BC%81%EF%BC%81%EF%BC%81/">卡牌肉鸽</a></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>Godot</category>
       
     </categories>
     
