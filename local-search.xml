@@ -87,33 +87,6 @@
   
   
   <entry>
-    <title>零基础新手Godot快速入门</title>
-    <link href="/2024/09/01/%E9%9B%B6%E5%9F%BA%E7%A1%80%E6%96%B0%E6%89%8BGodot%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8-%E5%88%9D%E8%AF%86Godot/"/>
-    <url>/2024/09/01/%E9%9B%B6%E5%9F%BA%E7%A1%80%E6%96%B0%E6%89%8BGodot%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8-%E5%88%9D%E8%AF%86Godot/</url>
-    
-    <content type="html"><![CDATA[<p>我记录并收集了自己学习Godot游戏引擎的过程，希望对想要入门Godot的新手有所帮助。  </p><span id="more"></span><h1 id="Godot入门"><a href="#Godot入门" class="headerlink" title="Godot入门"></a>Godot入门</h1><h3 id="熟悉Godot操作"><a href="#熟悉Godot操作" class="headerlink" title="熟悉Godot操作"></a>熟悉Godot操作</h3><ul><li>视频跟做：<a href="https://www.bilibili.com/video/BV17Z421J7uF/?spm_id_from=333.880.my_history.page.click">【精品熟肉】想在2024年做游戏？跟着Brackeys来学Godot引擎吧！_哔哩哔哩_bilibili</a></li><li>作者：Brackeys</li></ul><p><img src="/../img/Godot%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8/mqdefault.jpg"></p><p>学习Godot可以先从熟悉Godot的基本概念以及界面操作开始，如何创建游戏场景、如何创建精灵、怎么编写脚本、怎么导出项目，通过完成一个小型的平台跳跃游戏并将其导出，你便可以熟悉这些内容。  </p><p>这个视频全长1小时17分钟，视频并不枯燥制作十分优秀，全视频中仅编写了几个简单的脚本并且是手把手带着做，对于无编程基础或是没学过GDScript的新手友好，视频的作者Brackeys曾是油管最受欢迎的Unity游戏引擎视频主。  </p><h3 id="学习GDScirpt"><a href="#学习GDScirpt" class="headerlink" title="学习GDScirpt"></a>学习GDScirpt</h3><ul><li>文档阅读：<a href="https://reimenn.github.io/MyGDSciprtBook/GDScript.html">GDScript 零基础图文入门</a></li><li>作者：Rika</li></ul><p>在Godot中制作游戏离不开编程，Godot主要支持使用GDScirpt、C#、C++进行编程，GDScript是专门为Godot编写的脚本语言，契合度非常高，并且设计的比通用程序设计语言简单，学习成本低，使用GDScirpt可以让新手专注于游戏本身，不过多被技术问题困扰。</p><p>该文档介绍了GDScirpt的变量、循环、判断等基础知识，稍带有面向对象思想的讲解以及引擎交互的讲解，同时有简单的实战项目便于理解、学习。</p><hr><pre><code class="hljs">在完成了以上内容后已经具备了初步进行一些简单的2D游戏开发能力，可以尝试把先前视频跟做的项目更加完善，制作多个关卡、增加攻击敌人的玩法等等。</code></pre><h1 id="Godot精进"><a href="#Godot精进" class="headerlink" title="Godot精进"></a>Godot精进</h1><p>接下来可以选择跟做<a href="https://reimenn.github.io/MyGDSciprtBook/Part1/%E8%B5%84%E6%BA%90%E6%B1%87%E6%80%BB.html">功能更加复杂的项目</a>或是阅读<a href="https://docs.godotengine.org/zh-cn/4.x/">官方文档</a>，我会在接下来的学习中不断分享所学到的知识。</p><p>文章的最后，让为我准备通过Godot制作的卡牌肉鸽游戏打一个小小广告<a href="https://www.flyingfishfantasticfan.top/2024/08/28/%E5%8D%A1%E7%89%8C%E8%82%89%E9%B8%BD%E9%87%8D%E5%90%AF%E8%AE%A1%E5%88%92%EF%BC%81%EF%BC%81%EF%BC%81/">卡牌肉鸽</a></p>]]></content>
-    
-    
-    <categories>
-      
-      <category>Godot</category>
-      
-    </categories>
-    
-    
-    <tags>
-      
-      <tag>游戏开发</tag>
-      
-      <tag>Godot</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
     <title>卡牌肉鸽重启计划！！！</title>
     <link href="/2024/08/28/%E5%8D%A1%E7%89%8C%E8%82%89%E9%B8%BD%E9%87%8D%E5%90%AF%E8%AE%A1%E5%88%92%EF%BC%81%EF%BC%81%EF%BC%81/"/>
     <url>/2024/08/28/%E5%8D%A1%E7%89%8C%E8%82%89%E9%B8%BD%E9%87%8D%E5%90%AF%E8%AE%A1%E5%88%92%EF%BC%81%EF%BC%81%EF%BC%81/</url>
