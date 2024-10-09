@@ -19,32 +19,24 @@
   <meta name="author" content="FlyingfishFantasticfan">
   <meta name="keywords" content="">
   
-    <meta name="description" content="我使用Godot制作了一个平台跳跃游戏，这篇文章将展示角色的设计">
+    <meta name="description" content="使用TCP协议进行数据传输，可以提供可靠有序的数据传输，相比于HTTP每次请求都要建立和关闭连接，TCP连接一旦建立可以保持长时间的连接，适合需要持续通信的应用，但是由于TCP协议是面向流的协议，它将数据视为一个连续的字节流，而不是独立的消息。因此，发送端发送的数据可能会被拆分成多个数据包，或者多个小数据包可能会被合并成一个大的数据包发送到接收端。因此在使用TCP协议进行数据传输前需要额外解决以下">
 <meta property="og:type" content="article">
-<meta property="og:title" content="平台跳跃游戏:旋转跳跃不停歇-角色设计">
-<meta property="og:url" content="http://example.com/2024/09/15/%E5%B9%B3%E5%8F%B0%E8%B7%B3%E8%B7%83%EF%BC%9A%E6%97%8B%E8%BD%AC%E8%B7%B3%E8%B7%83%E4%B8%8D%E5%81%9C%E6%AD%87-%E8%A7%92%E8%89%B2%E8%AE%BE%E8%AE%A1/index.html">
+<meta property="og:title" content="SDL_net初体验-采取TCP协议进行数据传输需要注意的问题">
+<meta property="og:url" content="http://example.com/2024/10/05/SDL_net%E5%88%9D%E4%BD%93%E9%AA%8C-%E9%87%87%E5%8F%96TCP%E5%8D%8F%E8%AE%AE%E8%BF%9B%E8%A1%8C%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93%E9%9C%80%E8%A6%81%E6%B3%A8%E6%84%8F%E7%9A%84%E9%97%AE%E9%A2%98%E9%9B%86/index.html">
 <meta property="og:site_name" content="飞鱼丸游戏开发小屋">
-<meta property="og:description" content="我使用Godot制作了一个平台跳跃游戏，这篇文章将展示角色的设计">
+<meta property="og:description" content="使用TCP协议进行数据传输，可以提供可靠有序的数据传输，相比于HTTP每次请求都要建立和关闭连接，TCP连接一旦建立可以保持长时间的连接，适合需要持续通信的应用，但是由于TCP协议是面向流的协议，它将数据视为一个连续的字节流，而不是独立的消息。因此，发送端发送的数据可能会被拆分成多个数据包，或者多个小数据包可能会被合并成一个大的数据包发送到接收端。因此在使用TCP协议进行数据传输前需要额外解决以下">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/img/%E5%B9%B3%E5%8F%B0%E8%B7%B3%E8%B7%83%E6%B8%B8%E6%88%8F%EF%BC%9A%E6%97%8B%E8%BD%AC%E8%B7%B3%E8%B7%83%E4%B8%8D%E5%81%9C%E6%AD%87-%E8%A7%92%E8%89%B2%E8%AE%BE%E8%AE%A1/%E7%A7%BB%E5%8A%A8.gif">
-<meta property="og:image" content="http://example.com/img/%E5%B9%B3%E5%8F%B0%E8%B7%B3%E8%B7%83%E6%B8%B8%E6%88%8F%EF%BC%9A%E6%97%8B%E8%BD%AC%E8%B7%B3%E8%B7%83%E4%B8%8D%E5%81%9C%E6%AD%87-%E8%A7%92%E8%89%B2%E8%AE%BE%E8%AE%A1/%E8%B7%B3%E8%B7%83%E5%B1%95%E7%A4%BA.gif">
-<meta property="og:image" content="http://example.com/img/%E5%B9%B3%E5%8F%B0%E8%B7%B3%E8%B7%83%E6%B8%B8%E6%88%8F%EF%BC%9A%E6%97%8B%E8%BD%AC%E8%B7%B3%E8%B7%83%E4%B8%8D%E5%81%9C%E6%AD%87-%E8%A7%92%E8%89%B2%E8%AE%BE%E8%AE%A1/%E8%B7%B3%E8%B7%83%E5%B1%95%E7%A4%BA2.gif">
-<meta property="og:image" content="http://example.com/img/%E5%B9%B3%E5%8F%B0%E8%B7%B3%E8%B7%83%E6%B8%B8%E6%88%8F%EF%BC%9A%E6%97%8B%E8%BD%AC%E8%B7%B3%E8%B7%83%E4%B8%8D%E5%81%9C%E6%AD%87-%E8%A7%92%E8%89%B2%E8%AE%BE%E8%AE%A1/%E7%BF%BB%E6%BB%9A%E5%B1%95%E7%A4%BA.gif">
-<meta property="og:image" content="http://example.com/img/%E5%B9%B3%E5%8F%B0%E8%B7%B3%E8%B7%83%E6%B8%B8%E6%88%8F%EF%BC%9A%E6%97%8B%E8%BD%AC%E8%B7%B3%E8%B7%83%E4%B8%8D%E5%81%9C%E6%AD%87-%E8%A7%92%E8%89%B2%E8%AE%BE%E8%AE%A1/%E8%B7%B3%E7%BF%BB%E6%BB%9A.gif">
-<meta property="og:image" content="http://example.com/img/%E5%B9%B3%E5%8F%B0%E8%B7%B3%E8%B7%83%E6%B8%B8%E6%88%8F%EF%BC%9A%E6%97%8B%E8%BD%AC%E8%B7%B3%E8%B7%83%E4%B8%8D%E5%81%9C%E6%AD%87-%E8%A7%92%E8%89%B2%E8%AE%BE%E8%AE%A1/%E7%B4%AB%E6%BB%9A.gif">
-<meta property="og:image" content="http://example.com/img/%E5%B9%B3%E5%8F%B0%E8%B7%B3%E8%B7%83%E6%B8%B8%E6%88%8F%EF%BC%9A%E6%97%8B%E8%BD%AC%E8%B7%B3%E8%B7%83%E4%B8%8D%E5%81%9C%E6%AD%87-%E8%A7%92%E8%89%B2%E8%AE%BE%E8%AE%A1/%E9%87%91%E6%BB%9A.gif">
-<meta property="article:published_time" content="2024-09-14T16:00:00.000Z">
-<meta property="article:modified_time" content="2024-09-15T10:53:55.743Z">
+<meta property="article:published_time" content="2024-10-04T16:00:00.000Z">
+<meta property="article:modified_time" content="2024-10-09T04:44:03.077Z">
 <meta property="article:author" content="FlyingfishFantasticfan">
 <meta property="article:tag" content="游戏开发">
-<meta property="article:tag" content="Godot">
-<meta property="article:tag" content="平台跳跃">
+<meta property="article:tag" content="C++">
+<meta property="article:tag" content="SDL">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://example.com/img/%E5%B9%B3%E5%8F%B0%E8%B7%B3%E8%B7%83%E6%B8%B8%E6%88%8F%EF%BC%9A%E6%97%8B%E8%BD%AC%E8%B7%B3%E8%B7%83%E4%B8%8D%E5%81%9C%E6%AD%87-%E8%A7%92%E8%89%B2%E8%AE%BE%E8%AE%A1/%E7%A7%BB%E5%8A%A8.gif">
   
   
   
-  <title>平台跳跃游戏:旋转跳跃不停歇-角色设计 - 飞鱼丸游戏开发小屋</title>
+  <title>SDL_net初体验-采取TCP协议进行数据传输需要注意的问题 - 飞鱼丸游戏开发小屋</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -222,7 +214,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="平台跳跃游戏:旋转跳跃不停歇-角色设计"></span>
+            <span id="subtitle" data-typed-text="SDL_net初体验-采取TCP协议进行数据传输需要注意的问题"></span>
           
         </div>
 
@@ -233,8 +225,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-09-15 00:00" pubdate>
-          2024年9月15日 凌晨
+        <time datetime="2024-10-05 00:00" pubdate>
+          2024年10月5日 凌晨
         </time>
       </span>
     
@@ -245,7 +237,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          191 字
+          750 字
         
       </span>
     
@@ -256,7 +248,7 @@
         
         
         
-          2 分钟
+          7 分钟
         
       </span>
     
@@ -293,19 +285,42 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">平台跳跃游戏:旋转跳跃不停歇-角色设计</h1>
+            <h1 id="seo-header">SDL_net初体验-采取TCP协议进行数据传输需要注意的问题</h1>
             
             
               <div class="markdown-body">
                 
-                <p>我使用Godot制作了一个平台跳跃游戏，这篇文章将展示角色的设计 </p>
+                <p>使用TCP协议进行数据传输，可以提供可靠有序的数据传输，相比于HTTP每次请求都要建立和关闭连接，TCP连接一旦建立可以保持长时间的连接，适合需要持续通信的应用，但是由于<em><strong>TCP协议是面向流的协议</strong></em>，它将数据视为一个连续的字节流，而不是独立的消息。因此，发送端发送的数据可能会被拆分成多个数据包，或者多个小数据包可能会被合并成一个大的数据包发送到接收端。因此在使用TCP协议进行数据传输前需要额外解决以下几个问题:  </p>
 <span id="more"></span>
 
-<h3 id="移动"><a href="#移动" class="headerlink" title="移动"></a>移动</h3><p>按AD键左右移动<br><img src="/../img/%E5%B9%B3%E5%8F%B0%E8%B7%B3%E8%B7%83%E6%B8%B8%E6%88%8F%EF%BC%9A%E6%97%8B%E8%BD%AC%E8%B7%B3%E8%B7%83%E4%B8%8D%E5%81%9C%E6%AD%87-%E8%A7%92%E8%89%B2%E8%AE%BE%E8%AE%A1/%E7%A7%BB%E5%8A%A8.gif" srcset="/img/loading.gif" lazyload></p>
-<h3 id="跳跃"><a href="#跳跃" class="headerlink" title="跳跃"></a>跳跃</h3><p>按K键可以跳跃，可以跳过两格高<br><img src="/../img/%E5%B9%B3%E5%8F%B0%E8%B7%B3%E8%B7%83%E6%B8%B8%E6%88%8F%EF%BC%9A%E6%97%8B%E8%BD%AC%E8%B7%B3%E8%B7%83%E4%B8%8D%E5%81%9C%E6%AD%87-%E8%A7%92%E8%89%B2%E8%AE%BE%E8%AE%A1/%E8%B7%B3%E8%B7%83%E5%B1%95%E7%A4%BA.gif" srcset="/img/loading.gif" lazyload><br><img src="/../img/%E5%B9%B3%E5%8F%B0%E8%B7%B3%E8%B7%83%E6%B8%B8%E6%88%8F%EF%BC%9A%E6%97%8B%E8%BD%AC%E8%B7%B3%E8%B7%83%E4%B8%8D%E5%81%9C%E6%AD%87-%E8%A7%92%E8%89%B2%E8%AE%BE%E8%AE%A1/%E8%B7%B3%E8%B7%83%E5%B1%95%E7%A4%BA2.gif" srcset="/img/loading.gif" lazyload></p>
-<h3 id="蓝滚"><a href="#蓝滚" class="headerlink" title="蓝滚"></a>蓝滚</h3><p>按L键可以翻滚，可以通过翻滚过仅一格高的空间，翻滚期间移动速度略微提高，并且受重力影响减少，在跳跃后翻滚可以跳的更高<br><img src="/../img/%E5%B9%B3%E5%8F%B0%E8%B7%B3%E8%B7%83%E6%B8%B8%E6%88%8F%EF%BC%9A%E6%97%8B%E8%BD%AC%E8%B7%B3%E8%B7%83%E4%B8%8D%E5%81%9C%E6%AD%87-%E8%A7%92%E8%89%B2%E8%AE%BE%E8%AE%A1/%E7%BF%BB%E6%BB%9A%E5%B1%95%E7%A4%BA.gif" srcset="/img/loading.gif" lazyload><br><img src="/../img/%E5%B9%B3%E5%8F%B0%E8%B7%B3%E8%B7%83%E6%B8%B8%E6%88%8F%EF%BC%9A%E6%97%8B%E8%BD%AC%E8%B7%B3%E8%B7%83%E4%B8%8D%E5%81%9C%E6%AD%87-%E8%A7%92%E8%89%B2%E8%AE%BE%E8%AE%A1/%E8%B7%B3%E7%BF%BB%E6%BB%9A.gif" srcset="/img/loading.gif" lazyload></p>
-<h3 id="紫滚"><a href="#紫滚" class="headerlink" title="紫滚"></a>紫滚</h3><p>蓝滚期间跳跃触发紫滚，继承蓝滚的一切特性，跳跃高度降低，但是速度十分快，可以跨过很远的距离<br><img src="/../img/%E5%B9%B3%E5%8F%B0%E8%B7%B3%E8%B7%83%E6%B8%B8%E6%88%8F%EF%BC%9A%E6%97%8B%E8%BD%AC%E8%B7%B3%E8%B7%83%E4%B8%8D%E5%81%9C%E6%AD%87-%E8%A7%92%E8%89%B2%E8%AE%BE%E8%AE%A1/%E7%B4%AB%E6%BB%9A.gif" srcset="/img/loading.gif" lazyload></p>
-<h3 id="金滚"><a href="#金滚" class="headerlink" title="金滚"></a>金滚</h3><p>在蓝滚后不立即跳跃，可以在紫滚期间再一次进行翻滚，触发金滚，金滚期间无法改变移动方向<br><img src="/../img/%E5%B9%B3%E5%8F%B0%E8%B7%B3%E8%B7%83%E6%B8%B8%E6%88%8F%EF%BC%9A%E6%97%8B%E8%BD%AC%E8%B7%B3%E8%B7%83%E4%B8%8D%E5%81%9C%E6%AD%87-%E8%A7%92%E8%89%B2%E8%AE%BE%E8%AE%A1/%E9%87%91%E6%BB%9A.gif" srcset="/img/loading.gif" lazyload></p>
+<h2 id="粘包问题"><a href="#粘包问题" class="headerlink" title="粘包问题"></a>粘包问题</h2><ul>
+<li><p><strong>产生原因</strong>:  </p>
+<ol>
+<li>发送端的缓冲机制:TCP协议会将应用层的数据放入发送缓冲区，如果发送缓冲区中的数据量较小，TCP可能会将多个小数据包合并成一个大的数据包发送。</li>
+<li>接收区同样存在接收缓冲区，若接收端应用程序读取速度较慢，接收缓冲区可能会积累多个数据包，读取时便会将这些数据包合并在一起。</li>
+</ol>
+</li>
+<li><p><strong>解决方案</strong>:  </p>
+<ol>
+<li><strong>发送定长的消息</strong>，每个消息长度都是固定的，接收方每次只要读取固定长度的数据即可。</li>
+<li><strong>首尾识别符</strong>，使用特殊的识别符来标志数据的开始和结束。</li>
+<li><strong>数据头部添加长度信息</strong>，接收端先读取长度信息，再根据此信息去读取数据</li>
+</ol>
+</li>
+</ul>
+<h2 id="大小端问题"><a href="#大小端问题" class="headerlink" title="大小端问题"></a>大小端问题</h2><ul>
+<li><strong>产生原因</strong>: 大小端问题是指两种不同的字节存储方式，大端序会将高字节存储在低地址，小端序则相反，例如存储0x  12 34 56 78时，在大端序会将其存储为12 34 56 78，小端序则会存储为78 56 34 12，在涉及存储和传输多字节数据时，均可能出现大小端问题。</li>
+<li><strong>解决方案</strong>: 发送端和接收端都将数据转换为网络字节序(即大端序)，在SDL_net中在发送长度信息前调用SDL_SwapBE32,将长度信息转换为网络字节序，在接收信息时，也调用SDL_SwapBE32将网络字符序转换为主机字符序<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-type">int</span> networkLength;<br><span class="hljs-built_in">memcpy</span>(&amp;networkLength, buffer + bufferOffset, <span class="hljs-built_in">sizeof</span>(<span class="hljs-type">int</span>));<br><span class="hljs-type">int</span> length = <span class="hljs-built_in">SDL_SwapBE32</span>(networkLength); <span class="hljs-comment">// 转换为主机字节序</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-type">int</span> length = timestamp.<span class="hljs-built_in">length</span>() + <span class="hljs-number">1</span>;<br><span class="hljs-type">int</span> networkLength = <span class="hljs-built_in">SDL_SwapBE32</span>(length); <span class="hljs-comment">// 转换为网络字节序</span><br><span class="hljs-built_in">SDLNet_TCP_Send</span>(client, &amp;networkLength, <span class="hljs-built_in">sizeof</span>(networkLength));  <span class="hljs-comment">// 发送消息长度</span><br></code></pre></td></tr></table></figure>
+<blockquote>
+<p>SDL_SwapBE32原理是当主机字节序为小端字节序时会对字节序进行反转，反之则不变</p>
+</blockquote>
+</li>
+</ul>
+<h2 id="分段问题"><a href="#分段问题" class="headerlink" title="分段问题"></a>分段问题</h2><ul>
+<li><strong>产生原因</strong>: TCP 是一种流协议，它不保证每次发送的数据包会以相同的大小和顺序到达接收端,数据可能会被分成多个片段发送。</li>
+<li><strong>解决方案</strong>: 对数据是否完整接收进行判断，若不完整则持续接收信息直到完整接收再进行读取。</li>
+</ul>
 
                 
               </div>
@@ -324,7 +339,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/%E5%B9%B3%E5%8F%B0%E8%B7%B3%E8%B7%83%E6%B8%B8%E6%88%8F-%E6%97%8B%E8%BD%AC%E8%B7%B3%E8%B7%83%E4%B8%8D%E5%81%9C%E6%AD%87/" class="category-chain-item">平台跳跃游戏:旋转跳跃不停歇</a>
+  <a href="/categories/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B%E5%AD%A6%E4%B9%A0/" class="category-chain-item">网络编程学习</a>
   
   
 
@@ -341,9 +356,9 @@
       
         <a href="/tags/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91/" class="print-no-link">#游戏开发</a>
       
-        <a href="/tags/Godot/" class="print-no-link">#Godot</a>
+        <a href="/tags/C/" class="print-no-link">#C++</a>
       
-        <a href="/tags/%E5%B9%B3%E5%8F%B0%E8%B7%B3%E8%B7%83/" class="print-no-link">#平台跳跃</a>
+        <a href="/tags/SDL/" class="print-no-link">#SDL</a>
       
     </div>
   
@@ -355,8 +370,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>平台跳跃游戏:旋转跳跃不停歇-角色设计</div>
-      <div>http://example.com/2024/09/15/平台跳跃：旋转跳跃不停歇-角色设计/</div>
+      <div>SDL_net初体验-采取TCP协议进行数据传输需要注意的问题</div>
+      <div>http://example.com/2024/10/05/SDL_net初体验-采取TCP协议进行数据传输需要注意的问题集/</div>
     </div>
     <div class="license-meta">
       
@@ -368,7 +383,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2024年9月15日</div>
+          <div>2024年10月5日</div>
         </div>
       
       
@@ -400,9 +415,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/10/05/SDL_net%E5%88%9D%E4%BD%93%E9%AA%8C-%E9%87%87%E5%8F%96TCP%E5%8D%8F%E8%AE%AE%E8%BF%9B%E8%A1%8C%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93%E9%9C%80%E8%A6%81%E6%B3%A8%E6%84%8F%E7%9A%84%E9%97%AE%E9%A2%98%E9%9B%86/" title="SDL_net初体验-采取TCP协议进行数据传输需要注意的问题">
+                      <a href="/2024/10/09/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/" title="网络编程学习笔记-1">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">SDL_net初体验-采取TCP协议进行数据传输需要注意的问题</span>
+                        <span class="hidden-mobile">网络编程学习笔记-1</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -410,8 +425,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2024/09/05/Godot%E5%85%A8%E8%8A%82%E7%82%B9%E9%80%9F%E8%A7%88%EF%BC%9A2D%E8%8A%82%E7%82%B9-1/" title="Godot全节点速览：2D节点">
-                        <span class="hidden-mobile">Godot全节点速览：2D节点</span>
+                      <a href="/2024/09/15/%E5%B9%B3%E5%8F%B0%E8%B7%B3%E8%B7%83%EF%BC%9A%E6%97%8B%E8%BD%AC%E8%B7%B3%E8%B7%83%E4%B8%8D%E5%81%9C%E6%AD%87-%E8%A7%92%E8%89%B2%E8%AE%BE%E8%AE%A1/" title="平台跳跃游戏:旋转跳跃不停歇-角色设计">
+                        <span class="hidden-mobile">平台跳跃游戏:旋转跳跃不停歇-角色设计</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
